@@ -24,11 +24,11 @@ from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 StartTime = time.time()
 
 def get_user_list(__init__, key):
-    with open("{}/PrimeMega/{}".format(os.getcwd(), __init__), "r") as json_file:
+    with open("{}/EmikoRobot/{}".format(os.getcwd(), __init__), "r") as json_file:
         return json.load(json_file)[key]
 
 # enable logging
-FORMAT = "[PrimeMega] %(message)s"
+FORMAT = "[EmikoRobot] %(message)s"
 logging.basicConfig(
     handlers=[logging.FileHandler("log.txt"), logging.StreamHandler()],
     level=logging.INFO,
@@ -38,7 +38,7 @@ logging.basicConfig(
 logging.getLogger("pyrogram").setLevel(logging.INFO)
 logging.getLogger('ptbcontrib.postgres_persistence.postgrespersistence').setLevel(logging.WARNING)
 
-LOGGER = logging.getLogger('[PrimeMega]')
+LOGGER = logging.getLogger('[EmikoRobot]')
 LOGGER.info("Prime is starting. | An Prime Mega Parts. | Licensed under GPLv3.")
 LOGGER.info("Not affiliated to other anime or Villain in any way whatsoever.")
 LOGGER.info("Project maintained by: github.com/Tonic990 (t.me/Bukan_guudlooking)")
@@ -139,7 +139,7 @@ if ENV:
         raise Exception("Your blacklisted chats list does not contain valid integers.")
 
 else:
-    from PrimeMega.config import Development as Config
+    from EmikoRobot.config import Development as Config
 
     TOKEN = Config.TOKEN
 
@@ -244,7 +244,7 @@ else:
         LOGGER.warning("Can't connect to SpamWatch!")
         
 
-from PrimeMega.modules.sql import SESSION
+from EmikoRobot.modules.sql import SESSION
 
 defaults = tg.Defaults(run_async=True)
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
@@ -307,7 +307,7 @@ async def eor(msg: Message, **kwargs):
     return await func(**{k: v for k, v in kwargs.items() if k in spec})
 
 try:
-    from PrimeMega.antispam import antispam_restrict_user, antispam_cek_user, detect_user
+    from EmikoRobot.antispam import antispam_restrict_user, antispam_cek_user, detect_user
 
     LOGGER.info(
         f"{dispatcher.bot.first_name} Successfull loaded antispam to the system"
@@ -375,7 +375,7 @@ TIGERS = list(TIGERS)
 SPAMMERS = list(SPAMMERS)
 
 # Load at end to ensure all prev variables have been set
-from PrimeMega.modules.helper_funcs.handlers import (
+from EmikoRobot.modules.helper_funcs.handlers import (
     CustomCommandHandler,
     CustomMessageHandler,
     CustomRegexHandler,
